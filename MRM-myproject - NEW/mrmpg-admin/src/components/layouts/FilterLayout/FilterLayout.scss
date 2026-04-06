@@ -1,0 +1,419 @@
+.filter-layout {
+
+  padding: 32px 40px;
+
+  // Large tablets responsive
+  @media (max-width: 1200px) {
+    padding: 28px 36px;
+  }
+
+  // Tablets responsive
+  @media (max-width: 1024px) {
+    padding: 24px 32px;
+  }
+
+  // Small tablets responsive
+  @media (max-width: 768px) {
+    padding: 20px 24px;
+  }
+
+  // Mobile responsive
+  @media (max-width: 640px) {
+    padding: 16px 20px;
+  }
+
+  // Small mobile responsive
+  @media (max-width: 480px) {
+    padding: 14px 18px;
+  }
+
+  // Extra small mobile responsive
+  @media (max-width: 360px) {
+    padding: 12px 16px;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: space-between;
+    margin-bottom: 16px;
+
+    @media (max-width: 480px) {
+      margin-bottom: 12px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+
+      &.has-both {
+        flex-direction: row;
+        align-items: center;
+      }
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1f2937;
+
+    @media (max-width: 768px) {
+      font-size: 16px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 15px;
+      line-height: 1.3;
+    }
+  }
+
+  &__toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .toggle-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.4s ease-in-out;
+
+      &.collapsed {
+        transform: rotate(180deg);
+      }
+    }
+
+    .toggle-text {
+      @media (max-width: 768px) {
+        font-size: var(--font-size-sm);
+      }
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @media (max-width: 768px) {
+      gap: 14px;
+    }
+
+    @media (max-width: 480px) {
+      gap: 12px;
+    }
+  }
+
+  &--horizontal {
+    .filter-layout__content {
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: flex-end;
+
+      @media (max-width: 768px) {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
+  }
+
+  &--grid {
+    .filter-layout__content {
+      display: grid;
+      grid-template-columns: repeat(var(--columns, 3), 1fr);
+      gap: 16px;
+
+      // Large tablets and small desktops (1200px and down)
+      @media (max-width: 1200px) {
+        grid-template-columns: repeat(var(--columns-lg, 2), 1fr);
+      }
+
+      // Tablets (768px and down) - More flexible column handling
+      @media (max-width: 768px) {
+        grid-template-columns: repeat(var(--columns-md), 1fr);
+        gap: 14px;
+      }
+
+      // Mobile landscape (640px and down) - Reduce to 1-2 columns based on original
+      @media (max-width: 640px) {
+        grid-template-columns: repeat(var(--columns-sm, 1), 1fr);
+        gap: 12px;
+      }
+
+      // Mobile portrait (480px and down) - Always single column for readability
+      @media (max-width: 480px) {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      // Special handling for full-width items on mobile
+      .filter-item {
+        @media (max-width: 480px) {
+          grid-column: 1 / -1;
+        }
+      }
+    }
+
+    // Specific responsive behavior for different column counts
+    &[style*="--columns: 3"] {
+      .filter-layout__content {
+        @media (max-width: 768px) {
+          grid-template-columns: repeat(2, 1fr); // 3 cols -> 2 cols on tablet
+        }
+        @media (max-width: 640px) {
+          grid-template-columns: repeat(2, 1fr); // Stay 2 cols on mobile landscape
+        }
+      }
+    }
+
+    &[style*="--columns: 4"] {
+      .filter-layout__content {
+        @media (max-width: 768px) {
+          grid-template-columns: repeat(2, 1fr); // 4 cols -> 2 cols on tablet
+        }
+        @media (max-width: 640px) {
+          grid-template-columns: repeat(2, 1fr); // Stay 2 cols on mobile landscape
+        }
+      }
+    }
+
+    &[style*="--columns: 5"],
+    &[style*="--columns: 6"] {
+      .filter-layout__content {
+        @media (max-width: 1024px) {
+          grid-template-columns: repeat(3, 1fr); // 5-6 cols -> 3 cols on large tablet
+        }
+        @media (max-width: 768px) {
+          grid-template-columns: repeat(2, 1fr); // 5-6 cols -> 2 cols on tablet
+        }
+        @media (max-width: 640px) {
+          grid-template-columns: repeat(2, 1fr); // Stay 2 cols on mobile landscape
+        }
+      }
+    }
+  }
+
+  &--spacing-small {
+    .filter-layout__content {
+      gap: 8px;
+
+      @media (max-width: 480px) {
+        gap: 6px;
+      }
+    }
+  }
+
+  &--spacing-large {
+    .filter-layout__content {
+      gap: 24px;
+
+      @media (max-width: 768px) {
+        gap: 18px;
+      }
+
+      @media (max-width: 480px) {
+        gap: 16px;
+      }
+    }
+  }
+
+  &--spacing-compact {
+    .filter-layout__content {
+      gap: 6px;
+
+      @media (max-width: 480px) {
+        gap: 4px;
+      }
+    }
+  }
+
+  &--inline {
+    .filter-layout__content {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      gap: 12px;
+
+      @media (max-width: 768px) {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+      }
+
+      .filter-item {
+        flex: 0 0 auto;
+        min-width: 200px;
+
+        @media (max-width: 768px) {
+          min-width: unset;
+          flex: 1 1 auto;
+        }
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+
+    @media (max-width: 768px) {
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    @media (max-width: 480px) {
+      gap: 8px;
+      margin-top: 12px;
+      justify-content: center;
+    }
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 20px 0;
+
+    @media (max-width: 480px) {
+      justify-content: center;
+      padding: 16px 0;
+    }
+  }
+
+  // Loading state styles
+  &--loading {
+    .filter-layout__toggle,
+    .filter-button {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.filter-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0; // Prevent overflow
+
+  @media (max-width: 480px) {
+    gap: 3px;
+  }
+
+  // Ensure inputs don't overflow their container
+  input,
+  select,
+  textarea {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  &--date-range {
+    .date-range-inputs {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+
+      @media (max-width: 480px) {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 6px;
+      }
+
+      .date-range-start,
+      .date-range-end {
+        flex: 1;
+        min-width: 120px;
+
+        @media (max-width: 480px) {
+          min-width: unset;
+          width: 100%;
+        }
+      }
+
+      .date-range-separator {
+        font-size: var(--font-size-sm);
+        color: var(--gray-600);
+        font-weight: var(--font-weight-medium);
+        white-space: nowrap;
+        padding: 0 4px;
+
+        @media (max-width: 480px) {
+          align-self: center;
+          padding: 0;
+        }
+      }
+    }
+  }
+
+  .filter-error {
+    font-size: 12px;
+    color: #ef4444;
+    line-height: 1.2;
+    word-break: break-word;
+
+    @media (max-width: 480px) {
+      font-size: 11px;
+    }
+  }
+
+  // Loading skeleton styles
+  &--skeleton {
+    .skeleton-label {
+      height: 14px;
+      background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
+      background-size: 200% 100%;
+      border-radius: 4px;
+      margin-bottom: 6px;
+      animation: skeleton-loading 1.5s infinite;
+      width: 70%;
+    }
+
+    .skeleton-input {
+      height: 38px;
+      background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
+      background-size: 200% 100%;
+      border-radius: 6px;
+      animation: skeleton-loading 1.5s infinite;
+      width: 100%;
+    }
+
+    @media (max-width: 768px) {
+      .skeleton-input {
+        height: 36px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .skeleton-input {
+        height: 40px;
+      }
+    }
+  }
+}
+
+// Skeleton loading animation
+@keyframes skeleton-loading {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.filter-button {
+  // Additional filter-specific button styling can go here
+  &__download-report {
+    @media (max-width: 480px) {
+      // Button component handles sizing automatically
+    }
+  }
+}

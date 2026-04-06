@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-mrmpg-member-service
+  labels:
+    app: mrmpg-member
+spec:
+  type: {{ .Values.service.type }}
+  selector:
+    app: mrmpg-member
+  ports:
+    - protocol: TCP
+      port: {{ .Values.service.port }}
+      targetPort: {{ .Values.service.targetPort }}

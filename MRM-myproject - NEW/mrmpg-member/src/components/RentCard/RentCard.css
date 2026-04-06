@@ -1,0 +1,40 @@
+.rent-card {
+  background: #fff;
+  padding: 32px;
+  border: 1.5px solid #e2e2e2;
+  border-radius: 20px;
+  box-sizing: border-box;
+}
+
+.rent-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rent-heading {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.rent-price {
+  font-size: 40px;
+  margin: 25px 0 10px 0;
+  font-weight: 700;
+}
+
+.rent-due {
+  font-size: 16px;
+  margin-bottom: 25px;
+}
+
+.rent-divider {
+  border: none;
+  border-top: 1.2px solid #000;
+  /* margin-bottom: 10px; */
+}
+
+.rent-description {
+  font-size: 17px;
+}

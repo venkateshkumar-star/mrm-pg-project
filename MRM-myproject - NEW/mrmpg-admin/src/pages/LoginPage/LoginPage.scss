@@ -1,0 +1,109 @@
+.login-page {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding: 20px;
+
+    @media (max-width: 768px) {
+        padding: 16px;
+    }
+
+    @media (max-width: 480px) {
+        padding: 12px;
+        height: 100vh;
+        min-height: 600px;
+    }
+
+    @media (max-width: 320px) {
+        padding: 8px;
+        min-height: 550px;
+    }
+}
+
+.page-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("../../assets/images/login_page_bg.jpg") no-repeat center center fixed;
+    background-size: cover;
+    z-index: -1;
+
+    @media (max-width: 768px) {
+        background-attachment: scroll; // Better performance on mobile
+        background-position: center center;
+    }
+
+    @media (max-width: 480px) {
+        background-size: cover;
+        background-position: center top; // Focus on top part of image
+    }
+}
+
+.container{
+
+    display: flex;
+    max-width: 1200px;
+    max-height: 650px;
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--white);
+    border-radius: 20px;
+    background: #FFFFFF33;
+    backdrop-filter: blur(10px);
+    padding: 20px;
+
+    .content{
+        display: flex;     
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        position: relative;
+    }
+
+
+    .left-banner{
+        position: relative;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        .banner-image{
+            width: 470px;
+            height: 600px;
+
+            img{
+                width: 100%;
+                height: 100%;
+                border-radius: 20px;
+            }
+
+        }
+    }
+
+    .right-form{
+        width: 100%;
+    }
+
+    @media screen and (max-width: 500px) {
+        min-width: 320px;
+        width: 100%;
+    }
+
+    @media screen and (max-width: 1050px) {
+        .left-banner{
+            display: none;
+        }
+    }
+
+    // tablets
+    @media screen and (max-width: 770px) {
+        .left-banner{
+            display: none;
+        }
+    }
+
+}

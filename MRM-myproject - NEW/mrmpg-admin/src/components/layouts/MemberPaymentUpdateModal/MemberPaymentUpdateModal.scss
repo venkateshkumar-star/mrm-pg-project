@@ -1,0 +1,393 @@
+// Member Payment Update Modal Styles
+.member-payment-update-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+}
+
+.member-payment-update-modal {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    width: 100%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: modalSlideIn 0.3s ease-out;
+    
+    /* Hide scrollbar but keep functionality */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    
+    &::-webkit-scrollbar {
+        display: none; /* WebKit browsers */
+    }
+
+    @keyframes modalSlideIn {
+        from {
+            opacity: 0;
+            transform: scale(0.9) translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+    }
+
+    .modal-header {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        padding: 24px 24px 16px;
+        border-bottom: 1px solid #e5e7eb;
+
+        .header-content {
+            flex: 1;
+
+            h2 {
+                font-size: 1.5rem;
+                font-weight: 600;
+                color: #111827;
+                margin: 0 0 4px 0;
+            }
+
+            p {
+                font-size: 0.875rem;
+                color: #6b7280;
+                margin: 0;
+            }
+        }
+
+        .close-button {
+            margin-left: 16px;
+            color: #6b7280;
+            
+            &:hover {
+                color: #374151;
+            }
+        }
+    }
+
+    .payment-summary {
+        padding: 20px 24px;
+        background: #f9fafb;
+        border-bottom: 1px solid #e5e7eb;
+
+        .summary-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 16px;
+
+            h3 {
+                font-size: 1.125rem;
+                font-weight: 600;
+                color: #111827;
+                margin: 0;
+            }
+
+            svg {
+                color: #3b82f6;
+            }
+        }
+
+        .summary-content {
+            .summary-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 16px;
+
+                .summary-item {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 4px;
+
+                    label {
+                        font-size: 0.875rem;
+                        font-weight: 500;
+                        color: #6b7280;
+                    }
+
+                    span {
+                        font-size: 0.875rem;
+                        font-weight: 600;
+                        color: #111827;
+
+                        &.amount-value {
+                            color: #059669;
+                            font-size: 1rem;
+                        }
+
+                        &.status-badge {
+                            display: inline-flex;
+                            align-items: center;
+                            padding: 4px 8px;
+                            border-radius: 6px;
+                            font-size: 0.75rem;
+                            font-weight: 500;
+                            text-transform: uppercase;
+                            letter-spacing: 0.025em;
+                            width: fit-content;
+
+                            &--pending {
+                                background-color: #fef3c7;
+                                color: #d97706;
+                            }
+
+                            &--paid {
+                                background-color: #d1fae5;
+                                color: #059669;
+                            }
+
+                            &--overdue {
+                                background-color: #fee2e2;
+                                color: #dc2626;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .modal-form {
+        padding: 24px;
+
+        .form-section {
+            h4 {
+                font-size: 1.125rem;
+                font-weight: 600;
+                color: #111827;
+                margin: 0 0 20px 0;
+            }
+
+            .form-group {
+                margin-bottom: 20px;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+
+                .error-message {
+                    display: block;
+                    margin-top: 4px;
+                    font-size: 0.875rem;
+                    color: #dc2626;
+                    font-weight: 500;
+                }
+
+                // Ensure labels are visible
+                label {
+                    color: #374151;
+                    font-weight: 500;
+                }
+
+                // Radio button styling
+                .radio-group {
+                    .radio-option {
+                        label {
+                            color: #374151;
+                            font-weight: 400;
+                        }
+                    }
+                }
+            }
+
+            .file-upload-section {
+                margin-top: 24px;
+                padding: 20px;
+                background: #f9fafb;
+                border: 1px solid #e5e7eb;
+                border-radius: 8px;
+
+                h5 {
+                    font-size: 1rem;
+                    font-weight: 600;
+                    color: #111827;
+                    margin: 0 0 8px 0;
+                }
+
+                .section-description {
+                    font-size: 0.875rem;
+                    color: #6b7280;
+                    margin: 0 0 16px 0;
+                }
+
+                .upload-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                    gap: 16px;
+                }
+            }
+        }
+    }
+
+    .modal-actions {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 12px;
+        padding: 20px 24px;
+        border-top: 1px solid #e5e7eb;
+        background: white;
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+    }
+}
+
+// Responsive adjustments
+@media (max-width: 640px) {
+    .member-payment-update-modal-overlay {
+        padding: 16px;
+    }
+
+    .member-payment-update-modal {
+        .modal-header {
+            padding: 20px 20px 16px;
+            
+            .header-content {
+                h2 {
+                    font-size: 1.25rem;
+                }
+            }
+        }
+
+        .payment-summary {
+            padding: 16px 20px;
+
+            .summary-content {
+                .summary-grid {
+                    grid-template-columns: 1fr;
+                    gap: 12px;
+                }
+            }
+        }
+
+        .modal-form {
+            padding: 20px;
+
+            .form-section {
+                .file-upload-section {
+                    .upload-grid {
+                        grid-template-columns: 1fr;
+                    }
+                }
+            }
+        }
+
+        .modal-actions {
+            padding: 16px 20px;
+            flex-direction: column-reverse;
+
+            button {
+                width: 100%;
+            }
+        }
+    }
+}
+
+// Dark mode
+@media (prefers-color-scheme: dark) {
+    .member-payment-update-modal {
+        background: #1f2937;
+        color: #f9fafb;
+
+        .modal-header {
+            border-bottom-color: #374151;
+
+            .header-content {
+                h2 {
+                    color: #f9fafb;
+                }
+
+                p {
+                    color: #d1d5db;
+                }
+            }
+
+            .close-button {
+                color: #d1d5db;
+
+                &:hover {
+                    color: #f9fafb;
+                }
+            }
+        }
+
+        .payment-summary {
+            background: #111827;
+            border-bottom-color: #374151;
+
+            .summary-header {
+                h3 {
+                    color: #f9fafb;
+                }
+            }
+
+            .summary-content {
+                .summary-grid {
+                    .summary-item {
+                        label {
+                            color: #d1d5db;
+                        }
+
+                        span {
+                            color: #f9fafb;
+                        }
+                    }
+                }
+            }
+        }
+
+        .modal-form {
+            .form-section {
+                h4 {
+                    color: #f9fafb;
+                }
+
+                .form-group {
+                    // Ensure labels are visible in dark mode
+                    label {
+                        color: #f3f4f6;
+                    }
+
+                    // Radio button styling for dark mode
+                    .radio-group {
+                        .radio-option {
+                            label {
+                                color: #f3f4f6;
+                            }
+                        }
+                    }
+                }
+
+                .file-upload-section {
+                    background: #111827;
+                    border-color: #374151;
+
+                    h5 {
+                        color: #f9fafb;
+                    }
+
+                    .section-description {
+                        color: #d1d5db;
+                    }
+                }
+            }
+        }
+
+        .modal-actions {
+            border-top-color: #374151;
+            background: #1f2937;
+        }
+    }
+}

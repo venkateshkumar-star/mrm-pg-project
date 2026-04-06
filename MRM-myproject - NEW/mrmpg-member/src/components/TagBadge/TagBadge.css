@@ -1,0 +1,14 @@
+.tag-badge {
+  padding: 8px 18px;
+  border-radius: 12px;
+  font-size: 17px;
+  font-weight: 600;
+  width: fit-content;
+  background: #e6e6e6;
+  color: #333;
+}
+
+.tag-active {
+  background: #eef0ff;      
+  color: #4b5cff;         
+}

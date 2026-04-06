@@ -1,0 +1,299 @@
+.auth-layout {
+  display: flex;
+  justify-content: center;
+  background: #ffffff99;
+  backdrop-filter: blur(10px);
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  transition: 0.5s ease-in;
+  animation: login_form 0.8s ease-in 0.5s 1;
+  overflow: hidden;
+  z-index: 1;
+
+  // Tablet landscape
+  @media (max-width: 1024px) {
+    min-height: 450px;
+    border-radius: 16px;
+    justify-content: center;
+  }
+
+  // Tablet portrait
+  @media (max-width: 768px) {
+    border-radius: 16px;
+    min-height: 400px;
+    justify-content: center;
+    background: #ffffffbb;
+  }
+
+  // Mobile large
+  @media (max-width: 480px) {
+    border-radius: 12px;
+    background: #ffffffcc;
+    backdrop-filter: blur(8px);
+  }
+
+  // Mobile medium
+  @media (max-width: 390px) {
+    border-radius: 10px;
+    min-height: 320px;
+  }
+
+  // Mobile small
+  @media (max-width: 320px) {
+    border-radius: 8px;
+    background: #ffffffdd;
+  }
+
+  // Landscape orientation on mobile
+  @media (max-height: 500px) and (orientation: landscape) {
+    min-height: 280px;
+    border-radius: 12px;
+  }
+
+  // Very small landscape screens
+  @media (max-height: 400px) and (orientation: landscape) {
+    min-height: 250px;
+    border-radius: 8px;
+  }
+}
+
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 20px;
+  padding: 40px;
+
+  @media (max-width: 480px) {
+    width: 300px;
+  }
+
+  .auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    width: 100%;
+
+    .form-label {
+      margin-bottom: var(--spacing-xs);
+      font-weight: 500;
+      color: #374151;
+
+      @media (max-width: 480px) {
+        font-size: 14px;
+      }
+
+      @media (max-width: 320px) {
+        font-size: 13px;
+      }
+    }
+  }
+
+  .form-submit {
+    margin-top: 30px;
+
+    @media (max-width: 480px) {
+      margin-top: 24px;
+    }
+
+    @media (max-width: 320px) {
+      margin-top: 20px;
+    }
+  }
+
+  .auth-header {
+    text-align: center;
+    margin-bottom: 10px;
+
+    h1 {
+      font-size: var(--font-size-3xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--gray-800);
+      margin: 0;
+      letter-spacing: -0.025em;
+
+      @media (max-width: 768px) {
+        font-size: 2rem;
+      }
+
+      @media (max-width: 480px) {
+        font-size: 1.75rem;
+      }
+
+      @media (max-width: 320px) {
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  // Large desktop
+  @media (min-width: 1400px) {
+    padding: 48px;
+    gap: 28px;
+    max-width: 500px;
+
+    .auth-header h1 {
+      font-size: 2.5rem;
+    }
+
+    .form-submit {
+      margin-top: 36px;
+    }
+  }
+
+  // Desktop
+  @media (max-width: 1199px) {
+    padding: 40px;
+    gap: 24px;
+    max-width: 450px;
+
+    .auth-header h1 {
+      font-size: 2.25rem;
+    }
+  }
+
+  // Laptop and tablet landscape
+  @media (max-width: 1024px) {
+    padding: 36px;
+    gap: 22px;
+    max-width: 420px;
+
+    .auth-header h1 {
+      font-size: 2rem;
+    }
+  }
+
+  // Tablet portrait
+  @media (max-width: 768px) {
+    padding: 32px;
+    gap: 20px;
+    max-width: 400px;
+
+    .auth-header h1 {
+      font-size: 1.875rem;
+    }
+
+    .auth-form {
+      gap: 18px;
+    }
+  }
+
+  // Mobile large
+  @media (max-width: 480px) {
+    padding: 24px;
+    gap: 16px;
+    max-width: 100%;
+
+    .auth-header h1 {
+      font-size: 1.75rem;
+    }
+
+    .auth-form {
+      gap: 16px;
+    }
+
+    .form-submit {
+      margin-top: 24px;
+    }
+  }
+
+  // Mobile medium
+  @media (max-width: 390px) {
+    padding: 20px;
+    gap: 14px;
+
+    .auth-header h1 {
+      font-size: 1.625rem;
+    }
+
+    .auth-form {
+      gap: 14px;
+    }
+  }
+
+  // Mobile small
+  @media (max-width: 320px) {
+    padding: 16px;
+    gap: 12px;
+
+    .auth-header h1 {
+      font-size: 1.5rem;
+      line-height: 1.2;
+    }
+
+    .form-group {
+      gap: calc(var(--spacing-xs) * 0.75);
+    }
+
+    .auth-form {
+      gap: 12px;
+    }
+
+    .form-submit {
+      margin-top: 20px;
+    }
+  }
+
+  // Landscape orientation on mobile
+  @media (max-height: 500px) and (orientation: landscape) {
+    padding: 16px 24px;
+    gap: 8px;
+    max-width: 400px;
+
+    .auth-header {
+      margin-bottom: 4px;
+
+      h1 {
+        font-size: 1.5rem;
+        line-height: 1.1;
+      }
+    }
+
+    .form-group {
+      gap: calc(var(--spacing-xs) * 0.5);
+    }
+
+    .auth-form {
+      gap: 10px;
+    }
+
+    .form-submit {
+      margin-top: 12px;
+    }
+  }
+
+  // Very small landscape screens
+  @media (max-height: 400px) and (orientation: landscape) {
+    padding: 12px 20px;
+    gap: 6px;
+
+    .auth-header h1 {
+      font-size: 1.25rem;
+    }
+
+    .auth-form {
+      gap: 8px;
+    }
+
+    .form-submit {
+      margin-top: 10px;
+    }
+  }
+}
+
+@keyframes login_form {
+  from {
+    width: 0%;
+  }
+
+  to {
+    width: 100%;
+  }
+}

@@ -1,0 +1,22 @@
+export const CalendarIcon = ({
+  width = "20",
+  height = "20",
+  fill = "#000",
+  style = {},
+  ...rest
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={width}
+    height={height}
+    viewBox="0 0 24 24"
+    fill="none"
+    style={style}
+    {...rest}
+  >
+    <path
+      fill={fill}
+      d="M7 2v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2zM5 10h14v10H5z"
+    />
+  </svg>
+);

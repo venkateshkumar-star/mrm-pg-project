@@ -1,0 +1,115 @@
+// Search Component Styles
+.search-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-width: 0; // Prevent overflow
+
+  .search-input {
+    width: 100%;
+    padding: 10px 40px 10px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    line-height: 1.4;
+    background: #ffffff;
+    transition: all 0.2s ease-in-out;
+    min-height: 45px;
+    text-indent: 30px;
+    min-width: 0;
+    box-shadow: inset 0px 4px 4px 0px #00000040,  0px 4px 4px 0px #00000040;
+
+    @media (max-width: 768px) {
+      padding: 9px 36px 9px 10px;
+      font-size: 0.8125rem;
+      min-height: 40px;
+      text-indent: 28px;
+    }
+
+    @media (max-width: 480px) {
+      padding: 8px 34px 8px 10px;
+      font-size: 0.875rem;
+      min-height: 38px;
+      text-indent: 26px;
+      border-radius: 6px;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+
+      @media (max-width: 480px) {
+        box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.15);
+      }
+    }
+
+    &:hover:not(:disabled) {
+      border-color: #9ca3af;
+    }
+
+    &:disabled,
+    &.disabled {
+      background: #f9fafb;
+      color: #9ca3af;
+      cursor: not-allowed;
+    }
+
+    &::placeholder {
+      color: #9ca3af;
+      text-indent: 30px;
+
+      @media (max-width: 768px) {
+        text-indent: 28px;
+      }
+
+      @media (max-width: 480px) {
+        text-indent: 26px;
+        font-size: 0.8125rem;
+      }
+    }
+
+    &.error {
+      border-color: #ef4444;
+      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+    }
+  }
+
+  .search-icon {
+    position: absolute;
+    right: 12px;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9ca3af;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+
+    @media (max-width: 768px) {
+      width: 18px;
+      height: 18px;
+      left: 10px;
+    }
+
+    @media (max-width: 480px) {
+      width: 16px;
+      height: 16px;
+      left: 8px;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  &:focus-within .search-icon {
+    color: #3b82f6;
+  }
+}

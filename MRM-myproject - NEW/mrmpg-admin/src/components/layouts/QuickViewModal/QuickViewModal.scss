@@ -1,0 +1,1030 @@
+.quick-view-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.3s ease-out;
+  overflow-y: auto;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+}
+
+// Global styles to ensure dropdowns in quick view modal appear on top
+.quick-view-modal-overlay {
+
+  // Any dropdown content within this overlay should have maximum z-index
+  .select-dropdown-menu,
+  .dropdown-menu,
+  .select-options,
+  [data-select-dropdown],
+  [role="listbox"],
+  [role="menu"] {
+    z-index: 99999 !important;
+    position: absolute !important;
+  }
+}
+
+.quick-view-modal {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: slideIn 0.3s ease-out;
+  position: relative;
+  scrollbar-width: none;
+  z-index: 1000;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  // Ensure loading overlay stays above all modal content
+  .modal-loading-overlay {
+    z-index: 99999 !important;
+  }
+
+  // Global rule to ensure all select dropdowns appear on top
+  .select-dropdown,
+  .select-dropdown-content,
+  .dropdown-content,
+  [class*="dropdown"],
+  [class*="select-menu"] {
+    z-index: 9999 !important;
+    position: relative;
+  }
+}
+
+// Loading overlay for the modal
+.modal-loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  border-radius: 16px;
+
+  .loading-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 24px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--gray-200, #e5e7eb);
+
+    .loading-text {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--gray-700, #374151);
+      text-align: center;
+    }
+
+    svg {
+      color: var(--primary-color, #667eea);
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+// Combined Header and Banner Layout
+.quick-view-header-banner {
+  position: relative;
+  overflow: hidden;
+  color: white;
+
+  // Dynamic background based on member type
+  &.header-banner--LONG_TERM {
+    background: linear-gradient(135deg, var(--primary-color, #FF4B52) 0%, #FF6B6B 25%, #FF8E53 50%, #FFA726 75%, #FFB74D 100%);
+  }
+
+  &.header-banner--SHORT_TERM {
+    background: linear-gradient(135deg, #3b82f6 0%, #4f46e5 30%, #7c3aed 60%, #a855f7 90%, #c084fc 100%);
+  }
+
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -30%;
+    width: 120%;
+    height: 100%;
+    background: radial-gradient(ellipse, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 50%, transparent 70%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  // Header Content Section
+  .header-content {
+    display: flex;
+    flex-direction:row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px 16px;
+    position: relative;
+    z-index: 2;
+
+    .member-type-badge {
+      .type-badge {
+        display: inline-flex;
+        align-items: center;
+        padding: 6px 12px;
+        border-radius: 12px;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(10px);
+      }
+    }
+
+    .close-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border: none;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+
+      &:hover:not(:disabled) {
+        background: rgba(255, 255, 255, 0.3);
+        transform: scale(1.1);
+      }
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      svg {
+        color: white;
+      }
+    }
+  }
+
+  // Banner Content Section
+  .banner-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 8px 24px 24px;
+    position: relative;
+    z-index: 2;
+
+    .banner-profile {
+      .profile-image {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 3px solid rgba(255, 255, 255, 0.4);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        position: relative;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        .profile-placeholder {
+          width: 100%;
+          height: 100%;
+          background: rgba(255, 255, 255, 0.25);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          svg {
+            color: rgba(255, 255, 255, 0.9);
+          }
+        }
+
+        // Clickable profile image styles
+        &.profile-image--clickable {
+          cursor: pointer;
+          transition: all 0.3s ease;
+
+          .profile-image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 50%;
+
+            svg {
+              color: white;
+            }
+          }
+
+          &:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+
+            .profile-image-overlay {
+              opacity: 1;
+            }
+          }
+        }
+
+        // Loading state for profile image
+        .authenticated-image-loading {
+          width: 100%;
+          height: 100%;
+          background: rgba(255, 255, 255, 0.25);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: none !important;
+          border-radius: 50% !important;
+
+          .animate-spin {
+            color: rgba(255, 255, 255, 0.9);
+          }
+        }
+
+        // Error state for profile image
+        .authenticated-image-error {
+          width: 100%;
+          height: 100%;
+          background: rgba(255, 255, 255, 0.25);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: none !important;
+          border-radius: 50% !important;
+
+          svg {
+            color: rgba(255, 255, 255, 0.9);
+          }
+        }
+      }
+    }
+
+    .banner-info {
+      flex: 1;
+
+      .member-name {
+        font-size: 24px;
+        font-weight: 700;
+        margin: 0 0 8px 0;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      .member-id,
+      .member-room {
+        font-size: 14px;
+        opacity: 0.95;
+        margin: 2px 0;
+        font-weight: 500;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      }
+    }
+
+    .banner-actions {
+      border: none;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      align-self: flex-end;
+
+      button {
+        color: white;
+      }
+
+      button:hover {
+        color: white;
+      }
+
+      &:hover:not(:disabled) {
+        background: rgba(255, 255, 255, 0.3);
+        transform: scale(1.05);
+      }
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      svg {
+        color: white;
+      }
+    }
+
+  }
+}
+
+// Info Layout
+.quick-view-content {
+  padding: 24px;
+  position: relative;
+  z-index: 1;
+  overflow: visible;
+}
+
+.info-section {
+  margin-bottom: 28px;
+  position: relative;
+  z-index: 1;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  // Special handling for approval form section
+  &:has(.approval-form) {
+    overflow: visible;
+    z-index: 10;
+
+    // Ensure any dropdown content appears above everything else
+    .select-wrapper.select-wrapper--open {
+      z-index: 1000;
+    }
+  }
+
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e5e7eb;
+
+    svg {
+      color: var(--primary-color, #667eea);
+    }
+
+    // Dynamic icon colors based on member type
+    &.section-title--LONG_TERM svg {
+      color: var(--primary-color, #667eea);
+    }
+
+    &.section-title--SHORT_TERM svg {
+      color: #3b82f6;
+    }
+  }
+
+  .info-grid {
+    display: grid;
+    gap: 12px;
+  }
+
+  .info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background: #f9fafb;
+    border-radius: 8px;
+    border-left: 3px solid var(--primary-color, #667eea);
+
+    .info-label {
+      font-weight: 500;
+      color: #6b7280;
+      font-size: 14px;
+    }
+
+    .info-value {
+      font-weight: 600;
+      color: #1f2937;
+      font-size: 14px;
+    }
+
+    // Dynamic left border colors based on member type
+    &.info-item--LONG_TERM {
+      border-left-color: var(--primary-color, #667eea);
+    }
+
+    &.info-item--SHORT_TERM {
+      border-left-color: #3b82f6;
+    }
+  }
+}
+
+// Status badges
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  min-width: 70px;
+
+  &--paid {
+    background: #dcfce7;
+    color: #166534;
+    border: 1px solid #bbf7d0;
+  }
+
+  &--pending {
+    background: #fef3c7;
+    color: #92400e;
+    border: 1px solid #fde68a;
+  }
+}
+
+.approval-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  min-width: 70px;
+
+  &--approved {
+    background: #dcfce7;
+    color: #166534;
+    border: 1px solid #bbf7d0;
+  }
+
+  &--pending {
+    background: #fef3c7;
+    color: #92400e;
+    border: 1px solid #fde68a;
+  }
+
+  &--rejected {
+    background: #fee2e2;
+    color: #dc2626;
+    border: 1px solid #fecaca;
+  }
+}
+
+// Documents
+.documents-list {
+  .document-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background: #f9fafb;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    border-left: 3px solid var(--primary-color, #667eea);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    .document-name {
+      font-weight: 500;
+      color: #1f2937;
+      font-size: 14px;
+    }
+
+    .view-document-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--primary-color, #667eea);
+      font-weight: 500;
+
+      &:hover {
+        color: #4f46e5;
+        text-decoration: underline;
+      }
+    }
+
+    // Dynamic left border colors for documents based on member type
+    &.document-item--LONG_TERM {
+      border-left-color: var(--primary-color, #667eea);
+    }
+
+    &.document-item--SHORT_TERM {
+      border-left-color: #3b82f6;
+    }
+  }
+
+  .no-documents {
+    color: #6b7280;
+    font-style: italic;
+    text-align: center;
+    padding: 20px;
+    background: #f9fafb;
+    border-radius: 8px;
+    margin: 0;
+  }
+}
+
+// Approval Form
+.approval-form {
+  position: relative;
+  z-index: 1;
+
+  .form-grid {
+    display: grid;
+    gap: 16px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    position: relative;
+    z-index: 1;
+
+    // Highest z-index for PG Location select (first form group)
+    &:has(#pgLocation) {
+      z-index: 200;
+    }
+
+    // High z-index for room number select
+    &:has(#roomNo) {
+      z-index: 150;
+    }
+
+    // Medium z-index for rent amount input (third form group)
+    &:nth-child(3) {
+      z-index: 100;
+    }
+
+    // Lower z-index for advance amount input (fourth form group)
+    &:nth-child(4) {
+      z-index: 50;
+    }
+
+    // Lowest z-index for date of joining input (fifth form group)
+    &:nth-child(5) {
+      z-index: 25;
+    }
+
+    .form-input {
+      transition: all 0.2s ease;
+
+      &:focus-within {
+        transform: translateY(-1px);
+      }
+
+      // Dynamic focus colors based on member type
+      &.form-input--LONG_TERM {
+        &:focus-within {
+          border-color: var(--primary-color, #667eea);
+          box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+      }
+
+      &.form-input--SHORT_TERM {
+        &:focus-within {
+          border-color: #3b82f6;
+          box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+      }
+
+      // Readonly state styling
+      &[readonly] {
+        background-color: #f9fafb;
+        color: #6b7280;
+        cursor: not-allowed;
+        border-color: #d1d5db;
+      }
+
+      // Disabled state styling  
+      &:disabled {
+        background-color: #f3f4f6;
+        color: #9ca3af;
+        cursor: not-allowed;
+        border-color: #d1d5db;
+        opacity: 0.6;
+      }
+    }
+
+    // DateInput specific styling
+    .date-input-wrapper {
+      &.form-input--LONG_TERM {
+        .date-input {
+          &:focus {
+            border-color: var(--primary-color, #667eea);
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+          }
+        }
+      }
+
+      &.form-input--SHORT_TERM {
+        .date-input {
+          &:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+          }
+        }
+      }
+    }
+
+    // Auto-filled note styling
+    .auto-filled-note {
+      color: #10b981;
+      font-size: 12px;
+      font-style: italic;
+      margin-top: 4px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+
+      &::before {
+        content: "✓";
+        color: #10b981;
+        font-weight: bold;
+      }
+    }
+
+    // Rent info note styling for short-term members
+    .rent-info-note {
+      color: #3b82f6;
+      font-size: 12px;
+      font-style: italic;
+      margin-top: 4px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    // Date info note styling for short-term members
+    .date-info-note {
+      color: #3b82f6;
+      font-size: 12px;
+      font-style: italic;
+      margin-top: 4px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    // Error message styling
+    .error-message {
+      color: #ef4444;
+      font-size: 12px;
+      margin-top: 4px;
+      display: block;
+    }
+
+    // Specific styling for select dropdown
+    .select-wrapper {
+      position: relative;
+      z-index: inherit;
+
+      &--custom {
+        .select-dropdown-content {
+          z-index: 2000; // Very high z-index to ensure it appears above everything
+          position: absolute;
+          top: calc(100% + 4px);
+          left: 0;
+          right: 0;
+          background: #ffffff;
+          border: 1px solid #d1d5db;
+          border-radius: 8px;
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 8px 16px rgba(0, 0, 0, 0.1);
+          overflow: hidden;
+        }
+      }
+    }
+  }
+
+
+  &.approval-form--LONG_TERM {
+    .form-group label {
+      color: #1f2937;
+
+      &::after {
+        color: var(--primary-color, #667eea);
+      }
+    }
+  }
+
+  &.approval-form--SHORT_TERM {
+    .form-group label {
+      color: #1f2937;
+
+      &::after {
+        color: #3b82f6;
+      }
+    }
+  }
+}
+
+// Footer Layout
+.quick-view-footer {
+  padding: 20px 24px;
+  border-top: 1px solid #e5e7eb;
+  background: #f9fafb;
+  border-radius: 0 0 16px 16px;
+
+  .delete-user-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 auto;
+  }
+}
+
+// Document Viewer Modal Styles
+.document-viewer-modal {
+  .document-viewer-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+  }
+
+  .document-viewer-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+
+    .document-viewer-close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #666;
+      z-index: 10001;
+
+      &:hover {
+        color: #333;
+      }
+    }
+  }
+}
+
+.approve-user-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-around;
+
+  .approve-user-btn {
+    transition: all 0.2s ease;
+    flex: 1;
+
+    &:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    // Loading state styling
+    &:has(.animate-spin) {
+      pointer-events: none;
+
+      .animate-spin {
+        animation: spin 1s linear infinite;
+      }
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .quick-view-modal-overlay {
+    padding: 10px;
+    align-items: flex-start;
+    overflow-y: auto;
+    padding-top: 20px;
+  }
+
+  .quick-view-modal {
+    max-height: none;
+    min-height: auto;
+    width: 100%;
+    margin: 0;
+    border-radius: 12px;
+  }
+
+  .quick-view-header {
+    padding: 16px 20px 12px;
+
+    .member-type-badge .type-badge {
+      font-size: 11px;
+      padding: 4px 8px;
+    }
+
+    .close-button {
+      width: 28px;
+      height: 28px;
+    }
+  }
+
+  .quick-view-banner {
+    padding: 20px;
+    gap: 16px;
+
+    .banner-profile .profile-image {
+      width: 60px;
+      height: 60px;
+      border-width: 2px;
+    }
+
+    .banner-info {
+      .member-name {
+        font-size: 20px;
+        margin-bottom: 6px;
+      }
+
+      .member-id,
+      .member-room {
+        font-size: 13px;
+      }
+    }
+  }
+
+  .quick-view-content {
+    padding: 20px;
+  }
+
+  .info-section {
+    margin-bottom: 24px;
+
+    .section-title {
+      font-size: 15px;
+      margin-bottom: 12px;
+    }
+
+    .info-item {
+      padding: 10px 12px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+
+      .info-label,
+      .info-value {
+        font-size: 13px;
+      }
+    }
+  }
+
+  .approval-form {
+    .form-grid {
+      gap: 12px;
+    }
+
+    .form-group {
+      gap: 4px;
+    }
+  }
+
+  .documents-list .document-item {
+    padding: 10px 12px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+
+    .document-name {
+      font-size: 13px;
+    }
+  }
+
+  .quick-view-footer {
+    padding: 16px 20px;
+  }
+
+  .document-viewer-modal .document-viewer-content {
+    padding: 15px;
+    max-width: 95%;
+    max-height: 85%;
+
+    .document-viewer-close {
+      top: 5px;
+      right: 10px;
+      font-size: 20px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .quick-view-modal-overlay {
+    padding: 5px;
+    padding-top: 10px;
+  }
+
+  .quick-view-banner {
+    padding: 16px;
+    gap: 12px;
+    flex-direction: column;
+    text-align: center;
+
+    .banner-profile .profile-image {
+      width: 70px;
+      height: 70px;
+    }
+
+    .banner-info .member-name {
+      font-size: 18px;
+    }
+  }
+
+  .quick-view-content {
+    padding: 16px;
+  }
+
+  .info-section .section-title {
+    font-size: 14px;
+  }
+
+  .approval-form {
+    .form-grid {
+      gap: 10px;
+    }
+
+    .form-group {
+      gap: 3px;
+    }
+  }
+
+  .status-badge,
+  .approval-badge {
+    font-size: 10px;
+    padding: 3px 8px;
+    min-width: 60px;
+  }
+}

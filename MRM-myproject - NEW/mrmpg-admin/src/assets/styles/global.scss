@@ -1,0 +1,292 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900');
+
+:root {
+  // Primary Colors
+  --primary-color: #FF4B52;
+  --primary-hover: #E63E44;
+  --primary-active: #CC343A;
+  --primary-dark: #B82D33;
+  --primary-light: #FFB3B6;
+  --primary-lighter: #FFE6E7;
+  
+  // Secondary Colors
+  --secondary-color: #6C757D;
+  --secondary-hover: #5A6268;
+  --secondary-light: #E9ECEF;
+  
+  // Neutral Colors
+  --white: #FFFFFF;
+  --black: #000000;
+  --gray-50: #F8F9FA;
+  --gray-100: #E9ECEF;
+  --gray-200: #DEE2E6;
+  --gray-300: #CED4DA;
+  --gray-400: #ADB5BD;
+  --gray-500: #6C757D;
+  --gray-600: #495057;
+  --gray-700: #343A40;
+  --gray-800: #212529;
+  --gray-900: #1C1E21;
+  
+  // Status Colors
+  --success: #28A745;
+  --success-color: #28A745;
+  --success-light: #D4EDDA;
+  --success-lighter: #D4EDDA;
+  --warning: #FFC107;
+  --warning-color: #FFC107;
+  --warning-light: #FFF3CD;
+  --warning-lighter: #FFF3CD;
+  --danger: #DC3545;
+  --danger-light: #F8D7DA;
+  --error: #DC3545;
+  --error-color: #DC3545;
+  --error-light: #F8D7DA;
+  --error-lighter: #F8D7DA;
+  --info: #17A2B8;
+  --info-color: #17A2B8;
+  --info-light: #D1ECF1;
+  --info-lighter: #D1ECF1;
+  
+  // Typography
+  --font-family-primary: "Poppins", sans-serif;
+  
+  // Font Sizes
+  --font-size-xs: 0.75rem;    // 12px
+  --font-size-sm: 0.875rem;   // 14px
+  --font-size-base: 1rem;     // 16px
+  --font-size-lg: 1.125rem;   // 18px
+  --font-size-xl: 1.25rem;    // 20px
+  --font-size-2xl: 1.5rem;    // 24px
+  --font-size-3xl: 1.875rem;  // 30px
+  --font-size-4xl: 2.25rem;   // 36px
+  --font-size-5xl: 3rem;      // 48px
+  
+  // Font Weights
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-black: 900;
+  
+  // Line Heights
+  --line-height-none: 1;
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.625;
+  --line-height-loose: 2;
+  
+  // Spacing
+  --spacing-xs: 0.25rem;   // 4px
+  --spacing-sm: 0.5rem;    // 8px
+  --spacing-md: 1rem;      // 16px
+  --spacing-lg: 1.5rem;    // 24px
+  --spacing-xl: 2rem;      // 32px
+  --spacing-2xl: 3rem;     // 48px
+  --spacing-3xl: 4rem;     // 64px
+  
+  // Border Radius
+  --border-radius-none: 0;
+  --border-radius-sm: 0.125rem;  // 2px
+  --border-radius-md: 0.375rem;  // 6px
+  --border-radius-lg: 0.5rem;    // 8px
+  --border-radius-xl: 0.75rem;   // 12px
+  --border-radius-2xl: 1rem;     // 16px
+  --border-radius-full: 9999px;
+  
+  // Shadows
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  
+  // Transitions
+  --transition-fast: 150ms ease-in-out;
+  --transition-normal: 300ms ease-in-out;
+  --transition-slow: 500ms ease-in-out;
+  
+  // Z-index
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+
+  // Breakpoints
+  --breakpoint-sm: 320px;    // Mobile small
+  --breakpoint-md: 390px;    // Mobile medium  
+  --breakpoint-lg: 480px;    // Mobile large
+  --breakpoint-xl: 768px;    // Tablet portrait
+  --breakpoint-2xl: 1024px;  // Tablet landscape
+  --breakpoint-3xl: 1200px;  // Desktop
+  --breakpoint-4xl: 1440px;  // Large desktop
+}
+
+* {
+  box-sizing: border-box;
+}
+
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+.text-left{
+  text-align: left;
+}
+
+.color-primary{
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+  color: var(--gray-800);
+  background-color: var(--white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Remove default button styles
+button {
+  border: none;
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+  outline: none;
+}
+
+// Remove default input styles
+input,
+textarea,
+select {
+  font: inherit;
+  outline: none;
+}
+
+// Remove default link styles
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+// Remove default list styles
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+// Remove default margin from headings
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-weight: var(--font-weight-semibold);
+}
+
+// Remove default margin from paragraphs
+p {
+  margin: 0;
+}
+
+// Utility classes
+.text-primary {
+  color: var(--primary-color);
+}
+
+.bg-primary {
+  background-color: var(--primary-color);
+}
+
+.border-primary {
+  border-color: var(--primary-color);
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+// Responsive utilities
+.container-responsive {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--spacing-md);
+  padding-right: var(--spacing-md);
+}
+
+// Text alignment utilities
+@media (max-width: 768px) {
+  .text-center-mobile {
+    text-align: center !important;
+  }
+  
+  .text-left-mobile {
+    text-align: left !important;
+  }
+}
+
+// Display utilities for responsive design
+@media (max-width: 768px) {
+  .hide-mobile {
+    display: none !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .hide-desktop {
+    display: none !important;
+  }
+}
+
+// Spacing utilities for different screen sizes
+@media (max-width: 480px) {
+  .spacing-mobile-sm {
+    gap: var(--spacing-sm) !important;
+  }
+  
+  .padding-mobile-sm {
+    padding: var(--spacing-sm) !important;
+  }
+  
+  .margin-mobile-sm {
+    margin: var(--spacing-sm) !important;
+  }
+}

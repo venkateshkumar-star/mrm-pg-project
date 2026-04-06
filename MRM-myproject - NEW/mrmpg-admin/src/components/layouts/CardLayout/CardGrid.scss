@@ -1,0 +1,245 @@
+// Card Grid Container
+.card-grid-container {
+  width: 100%;
+}
+
+// Card Grid Header (Refresh Section)
+.card-grid-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 40px 20px;
+
+  .last-updated {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--gray-600, #6b7280);
+    font-size: 14px;
+
+    svg {
+      color: var(--gray-500, #9ca3af);
+    }
+
+    .timestamp {
+      font-weight: 500;
+    }
+  }
+
+  .refresh-section {
+    display: flex;
+    align-items: center;
+  }
+
+  // Tablet responsive
+  @media (max-width: 1024px) {
+    padding: 14px 32px 18px;
+  }
+
+  // Small tablets responsive
+  @media (max-width: 768px) {
+    padding: 12px 24px 16px;
+    
+    .last-updated {
+      font-size: 13px;
+      gap: 6px;
+    }
+  }
+
+  // Mobile responsive
+  @media (max-width: 640px) {
+    padding: 10px 20px 14px;
+    gap: 12px;
+
+    .refresh-section {
+      align-self: flex-end;
+    }
+  }
+
+  // Small mobile responsive
+  @media (max-width: 480px) {
+    padding: 8px 18px 12px;
+    gap: 10px;
+
+    .last-updated {
+      font-size: 12px;
+      gap: 4px;
+    }
+  }
+
+  // Extra small mobile responsive
+  @media (max-width: 360px) {
+    padding: 6px 16px 10px;
+    gap: 8px;
+  }
+}
+
+.card-grid {
+  display: grid;
+  width: 100%;
+  padding: 20px 40px 32px;
+
+  // Large tablets responsive
+  @media (max-width: 1200px) {
+    padding: 28px 36px;
+  }
+
+  // Tablets responsive
+  @media (max-width: 1024px) {
+    padding: 24px 32px;
+  }
+
+  // Small tablets responsive
+  @media (max-width: 768px) {
+    padding: 20px 24px;
+  }
+
+  // Mobile responsive
+  @media (max-width: 640px) {
+    padding: 16px 20px;
+  }
+
+  // Small mobile responsive
+  @media (max-width: 480px) {
+    padding: 14px 18px;
+  }
+
+  // Extra small mobile responsive
+  @media (max-width: 360px) {
+    padding: 12px 16px;
+  }
+
+  &--sm {
+    gap: 12px;
+  }
+
+  &--md {
+    gap: 20px;
+  }
+
+  &--lg {
+    gap: 28px;
+  }
+
+  &--cols-1 {
+    grid-template-columns: 1fr;
+  }
+
+  &--cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  &--cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  &--cols-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  &--cols-5 {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  &--cols-6 {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  // Enhanced responsiveness for better mobile experience
+  @media (max-width: 1400px) {
+    &--cols-5,
+    &--cols-6 {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  @media (max-width: 1200px) {
+    &--cols-4,
+    &--cols-5,
+    &--cols-6 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 1024px) {
+    &--cols-3,
+    &--cols-4,
+    &--cols-5,
+    &--cols-6 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    &--cols-2,
+    &--cols-3,
+    &--cols-4,
+    &--cols-5,
+    &--cols-6 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    &--sm {
+      gap: 10px;
+    }
+
+    &--md {
+      gap: 16px;
+    }
+
+    &--lg {
+      gap: 22px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    &--cols-2,
+    &--cols-3,
+    &--cols-4,
+    &--cols-5,
+    &--cols-6 {
+      grid-template-columns: 1fr;
+    }
+
+    &--sm {
+      gap: 8px;
+    }
+
+    &--md {
+      gap: 12px;
+    }
+
+    &--lg {
+      gap: 16px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    &--sm {
+      gap: 6px;
+    }
+
+    &--md {
+      gap: 10px;
+    }
+
+    &--lg {
+      gap: 14px;
+    }
+  }
+
+  // Ensure cards maintain proper spacing on very small screens
+  @media (max-width: 360px) {
+    &--sm {
+      gap: 4px;
+    }
+
+    &--md {
+      gap: 8px;
+    }
+
+    &--lg {
+      gap: 12px;
+    }
+  }
+}
